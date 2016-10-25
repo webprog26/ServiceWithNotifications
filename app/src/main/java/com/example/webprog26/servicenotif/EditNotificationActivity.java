@@ -58,6 +58,10 @@ public class EditNotificationActivity extends AppCompatActivity implements View.
         }
     }
 
+    /**
+     *
+     * @return boolean user message has at least one symbol
+     */
     private boolean isMessageExists()
     {
         return mEtMessageToService.getText().toString().length() > 0;
@@ -88,6 +92,11 @@ public class EditNotificationActivity extends AppCompatActivity implements View.
         }
     }
 
+    /**
+     * Makes Toast message with received message text and visibility time
+     * @param message
+     * @param toastLength
+     */
     private void makeToast(String message, int toastLength)
     {
         Toast.makeText(this, message, toastLength).show();

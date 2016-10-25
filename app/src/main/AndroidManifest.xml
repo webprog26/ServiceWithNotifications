@@ -22,9 +22,8 @@
             android:parentActivityName=".MainActivity"
             android:launchMode="singleTop"/>
 
-        <service android:name=".services.NotificationService"
-            android:stopWithTask="false"/>
-
+        <service android:name=".services.NotificationService"/>
+        <service android:name=".services.HideNotificationService"/>
         <receiver
             android:name=".receivers.NotificationsReceiver"
             android:enabled="true"

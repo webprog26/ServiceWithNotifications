@@ -1,5 +1,6 @@
 package com.example.webprog26.servicenotif.services;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -7,6 +8,7 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.os.Binder;
+import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
@@ -28,20 +30,34 @@ public class NotificationService extends Service {
 
     private static final String TAG = "NotificationService_TAG";
 
-    private static final String GROUP_TEA = "group_tea";
-    private static final int NOTIFICATION_ID = 101;
+    private static final String GROUP_TEA = "group_tea"; //Notifications group title
+    private static final int NOTIFICATION_ID = 101; //Notification id. Always the same to keep only one notification at the time
 
-    private ArrayList<String> mNotificationsTitlesList;
-    private NotificationsThread mNotificationsThread;
-    private boolean flagIsThreadRunning = false;
-    private final IBinder mIBinder = new LocalBinder();
-    private boolean hasUnread = false;
+    private ArrayList<String> mNotificationsTitlesList;//ArrayList to store messages
+    private NotificationsThread mNotificationsThread;//Separate Thread to send notifications
+    private boolean flagIsThreadRunning = false;//indicates Servise stopped so the Thread should be stopped too
+    private final IBinder mIBinder = new LocalBinder();//Redefined IBinder to bind with NotificationService from EditNotificationActivity
+    private boolean hasUnread = false; //indicates unread notifications
 
+    @SuppressWarnings("deprecation")
     @Override
     public void onCreate() {
         super.onCreate();
         mNotificationsTitlesList = new ArrayList<>();
         Log.i(TAG, "onCreate()");
+        Notification.Builder builder = new Notification.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher);
+        Notification notification;
+        if(Build.VERSION.SDK_INT < 16)
+        {
+            notification = builder.getNotification();
+        } else {
+            notification = builder.build();
+        }
+        startForeground(777, notification);
+
+        Intent hideIntent = new Intent(this, HideNotificationService.class);
+        startService(hideIntent);
     }
 
     @Override
