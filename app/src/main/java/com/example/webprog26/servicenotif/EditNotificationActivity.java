@@ -17,7 +17,7 @@ public class EditNotificationActivity extends AppCompatActivity implements View.
 
     private EditText mEtMessageToService;
     private NotificationService mNotificationService;
-    private boolean isServiceBound = false;
+    private boolean isServiceBound = false; //indicates bound state with NotificationService
 
     @Override
     protected void onStart() {
