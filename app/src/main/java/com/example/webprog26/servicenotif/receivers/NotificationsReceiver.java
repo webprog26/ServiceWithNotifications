@@ -16,6 +16,7 @@ public class NotificationsReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Intent notificationsIntent = new Intent(context, NotificationService.class);
         notificationsIntent.putExtra(MainActivity.DEFAULT_NOTIFICATION_MESSAGE, context.getResources().getString(R.string.default_message));
+        notificationsIntent.putExtra(MainActivity.NOTIFICATION_PAUSE, MainActivity.NOTIFICATION_PAUSE_INTERVAL);
         context.startService(notificationsIntent);
     }
 }

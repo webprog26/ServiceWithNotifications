@@ -6,4 +6,8 @@
     <string name="send_message_to_service">Send message to service</string>
     <string name="default_message">Have some tea!</string>
     <integer name="edit_text_lines">4</integer>
+    <string name="stop_this_ugliness">You didn\'t drink your tea for 30 minutes! Stop this ugliness!</string>
+    <string name="new_notifications">New notifications %d</string>
+    <string name="message_sent_successfully">Message sent successfully</string>
+    <string name="message_is_empty_warning">Message can\'t be empty</string>
 </resources>

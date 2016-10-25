@@ -13,6 +13,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "MainActivity_TAG";
 
     public static final String DEFAULT_NOTIFICATION_MESSAGE = "com.example.webprog26.servicenotif.default_notification_service";
+    public static final String NOTIFICATION_PAUSE = "com.example.webprog26.servicenotif.default_notification_pause";
+
+    public static final long NOTIFICATION_PAUSE_INTERVAL = 60;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             case R.id.btnStartService:
                 intent.putExtra(DEFAULT_NOTIFICATION_MESSAGE, getResources().getString(R.string.default_message));
+                intent.putExtra(NOTIFICATION_PAUSE, NOTIFICATION_PAUSE_INTERVAL);
                 startService(intent);
                 break;
             case R.id.btnStopService:
