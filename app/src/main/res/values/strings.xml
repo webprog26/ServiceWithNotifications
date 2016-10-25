@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ServiceNotif</string>
+    <string name="start_service">Start service</string>
+    <string name="stop_service">Stop service</string>
+    <string name="type_your_message">Type your message</string>
+    <string name="send_message_to_service">Send message to service</string>
+    <string name="default_message">Have some tea!</string>
+    <integer name="edit_text_lines">4</integer>
+</resources>
